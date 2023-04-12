@@ -132,6 +132,7 @@ function DetailCard(props) {
               <p className="opacity-25 text-[13px]">Check-out</p>
             </div>
             <DatePicker
+ minDate={new Date(date)}
               selected={date1}
               onChange={(date) => setDate1(date)}
               dateFormat="yyyy-MM-dd"
