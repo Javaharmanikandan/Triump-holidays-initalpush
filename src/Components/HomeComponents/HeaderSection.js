@@ -101,13 +101,27 @@ function HeaderSection() {
             break;
         case 'libtn':
             setdropDownControll({ destination: false })
-
+        case 'destiImage':
+            setdropDownControll({ destination: true })
             break;
+        case 'destiName':
+          setdropDownControll({ destination: true })
+          break;
         case 'overlayGuest':
             setdropDownControll({ guest: false })
 
             break;
         case 'Guestbtn':
+            setdropDownControll({ guest: true })
+
+            break;
+
+            case 'GuestName':
+            setdropDownControll({ guest: true })
+
+            break;
+
+            case 'GuestImage':
             setdropDownControll({ guest: true })
 
             break;
@@ -165,13 +179,13 @@ function setDateFun1(date) {
         </div>
 
         <div className="relative mt-16 mb-5 hidden md:flex lg:flex xl:flex flex-row md:flex-row lg:flex-row xl:flex-row justify-center w-full gap-x-16  items-stretch">
-          <div className="relative z-10 gap-y-5 flex flex-col md:flex-col lg:flex-row xl:flex-row gap-x-3 p-3.5 bg-white w-fit after:rounded-md  md:after:w-[0%] lg:after:w-[107%] xl:after:2-[107%] after:content-[''] after:bg-white after:w-[0%] after:h-full after:absolute  after:skew-y-[0deg] after:skew-x-[340deg] after:z-[-1] after:top-0 after:-left-6 after:zindex-[-5px]">
+          <div id='sampleTest' onClick={(e)=>{HandlerforHide(e)}} className="relative z-10 gap-y-5 flex flex-col md:flex-col lg:flex-row xl:flex-row gap-x-3 p-3.5 bg-white w-fit after:rounded-md  md:after:w-[0%] lg:after:w-[107%] xl:after:2-[107%] after:content-[''] after:bg-white after:w-[0%] after:h-full after:absolute  after:skew-y-[0deg] after:skew-x-[340deg] after:z-[-1] after:top-0 after:-left-6 after:zindex-[-5px]">
             <div
              id='overlayBtn' onClick={HandlerforHide}
               className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer relative"
             >
-              <img className="h-10" src="assets/images/svg/map.svg" alt="" />
-              <p className="capitalize text-sm">
+              <img id='destiImage' className="h-10" src="assets/images/svg/map.svg" alt="" />
+              <p id='destiName' className="capitalize text-sm">
                 {destination === ""
                   ? "destination"
                   : destination}
@@ -252,8 +266,8 @@ function setDateFun1(date) {
             </div>{" "}
 
             <div id='Guestbtn' onClick={HandlerforHide} className="relative flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
-                            <img className="h-10" src="assets/images/svg/guests.svg" alt="" />
-                            <p className="capitalize text-sm">{guest === ""
+                            <img id='GuestImage' onClick={(e)=>{HandlerforHide(e)}}  className="h-10" src="assets/images/svg/guests.svg" alt="" />
+                            <p id='GuestName' onClick={(e)=>{HandlerforHide(e)}}   className="capitalize text-sm">{guest === ""
                   ? "Guests"
                   : guest}</p>
                             <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
