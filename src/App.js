@@ -10,12 +10,16 @@ import Profile from "./Pages/Profile";
 import Search from "./Pages/Search";
 import ViewAllPhotos from "./Pages/ViewAllPhotos";
 import "./Style/style.css";
+import Login from "./Pages/Login";
+import toast, { Toaster } from 'react-hot-toast';
+import Register from "./Pages/Register";
 
 
 function App() {
 
   // const LoaderState = useSelector((state)=>state.Loader.value.LoaderState)
   const LoaderState=false;
+
   return (
     <>
       <Router>
@@ -26,9 +30,13 @@ function App() {
         <Route path="/detail/:id" element={<HotelDetail />} />
         <Route path="/photos" element={<ViewAllPhotos />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         </Routes>
         <Loader active={LoaderState} />
+        <Toaster />
       <Footer />
+
       </Router>
 
     </>

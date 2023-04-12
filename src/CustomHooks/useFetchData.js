@@ -3,22 +3,26 @@ import axios from "axios";
 import { ApiCall } from "../_api_/Api";
 
 function useFetchData(url, method,payload,id) {
+
+
   //id for ref reload page after url chages based on id in same link
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  console.log(payload ,"IUse Payload Top")
 
   //Baseurl + To cover full url
   const baseUrl = process.env.REACT_APP_SERVER_BASE_URL + url;
 
   useEffect((url) => {
 
-    console.log("Called Success");
+    
     
       setLoading(true);
       async function loadData() {
         try {
-          const dataGet = await ApiCall.getApiDetails(baseUrl, method,payload);
+          console.log(payload ,"Try Payload Top")
+          const dataGet = await ApiCall.getApiDetails(baseUrl,method,payload);
           setData(dataGet.data);
           setLoading(false);
         } catch (err) {

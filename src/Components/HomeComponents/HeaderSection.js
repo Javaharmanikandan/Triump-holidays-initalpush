@@ -1,82 +1,292 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
-import useFetchData from '../../CustomHooks/useFetchData';
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import useFetchData from "../../CustomHooks/useFetchData";
+import DatePicker from "react-datepicker";
 
-function HeaderSection(props) {
-    const [usepackage, setPackage] = useState({destination:"", checkin:"", checkout:"",guest:""})
-    const [dropDownControll, setdropDownControll] = useState({destination:false, checkin:false, checkout:false, guest:false})
-    const navigate = useNavigate();
+import "react-datepicker/dist/react-datepicker.css";
+function HeaderSection() {
 
-       const { data: bannerAndFaqData, loading, error, refetch } = useFetchData(
-        "/banner-faq/list","get",[]);
+  const [datePicker, setDatePicker] = useState(false);
+  const [date, setDate] = useState(new Date());
+  const [date1, setDate1] = useState(new Date(Date.now() + ( 3600 * 1000 * 24)));
 
-        const bannerData = bannerAndFaqData && bannerAndFaqData.data.banner;
-        const faqData = bannerAndFaqData && bannerAndFaqData.data.faq;
 
-    return (
-        <>
-        
-            <div className=" w-full bg-green-200 relative p-5  pb-48">
-                <img className="absolute inset-0 h-full w-full object-cover" src={bannerData && bannerData.banner_image} alt="" />
-                <div className="hidden sm:hidden md:hidden lg:hidden xl:hidden  z-10 relative  md:float-right lg:float-right xl:float-right gap-x-2 px-20">
-                    <div className='flex flex-col w-fit cursor-pointer group'>
-                        <p className="text-white">Domestic packages</p>
-                        <div className='h-1 w-full group-hover:bg-red-600 rounded-full'></div>
-                    </div>
-                    <div className='flex flex-col w-fit cursor-pointer group'>
-                        <p className="text-white">International packages</p>
-                        <div className='h-1 w-full group-hover:bg-red-600 rounded-full'></div>
-                    </div>
-                    <img className='w-5' src="assets/images/svg/glob.svg" alt="" />
-                    <img className='w-5' src="assets/images/svg/circle-user.svg" alt="" />
-                </div>
+  const [destination ,setDesignation] =useState("");
+  const [guest ,setGuest] =useState("")
+  const [destinationId ,setDestinationId] =useState("")
+  
+  const [dropDownControll, setdropDownControll] = useState({
+    destination: false,
+    checkin: false,
+    checkout: false,
+    guest: false,
+  });
+  const [designationSelected, setDesignationSeleted] = useState();
+  const navigate = useNavigate();
 
-                <div className="relative flex justify-center w-full mt-24 ">
-                    <p className="text-5xl font-Gloom text-center font-bold capitalize text-white">{bannerData && bannerData.banner_text}</p>
-                </div>
+  const {
+    data: bannerAndFaqData,
+    loading,
+    error,
+    refetch,
+  } = useFetchData("/banner-faq/list", "get", []);
 
-                <div className="relative mt-16 mb-5 hidden md:flex lg:flex xl:flex flex-row md:flex-row lg:flex-row xl:flex-row justify-center w-full gap-x-16  items-stretch">
-                    <div className="relative z-10 gap-y-5 flex flex-col md:flex-col lg:flex-row xl:flex-row gap-x-3 p-3.5 bg-white w-fit after:rounded-md  md:after:w-[0%] lg:after:w-[107%] xl:after:2-[107%] after:content-[''] after:bg-white after:w-[0%] after:h-full after:absolute  after:skew-y-[0deg] after:skew-x-[340deg] after:z-[-1] after:top-0 after:-left-6 after:zindex-[-5px]" >
-                        <div onClick={()=> {setdropDownControll({destination:true})}} className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer relative">
-                            <img className="h-10" src="assets/images/svg/map.svg" alt="" />
-                            <p className="capitalize text-sm">{usepackage.destination === ""? 'destination': usepackage.destination}</p>
-                            <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
-                            
-                            <div  onClick={()=> {setdropDownControll({destination:false})}} className={dropDownControll.destination?'fixed inset-0' : 'hidden'}></div>
-                            <div className={dropDownControll.destination? 'absolute p-5 bg-white top-20 rounded-[5px]': 'hidden'}>
-                                <ul className='flex  flex-col gap-1'>
-                                    <li className='flex gap-1 opacity-50'> <img className='w-3 ' src="assets/images/svg/location.svg" alt=""/><p>Singapore</p></li>
+  const { data: designationData } = useFetchData(
+    "/master/destination-list",
+    "get",
+    []
+  );
 
-                                </ul>   
-                            </div>
-                        </div>
-                        <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer relative">
-                            <img className="h-10" src="assets/images/svg/calendar1.svg" alt="" />
-                            <p className="capitalize text-sm">check in</p>
-                            <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
+  console.log(designationData, "design");
+  const bannerData = bannerAndFaqData && bannerAndFaqData.data.banner;
+  const faqData = bannerAndFaqData && bannerAndFaqData.data.faq;
 
-                          
+  const replaceCall = (id,name) => {
 
-                        </div> <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
-                            <img className="h-10" src="assets/images/svg/calendar1.svg" alt="" />
-                            <p className="capitalize text-sm">check out</p>
-                            <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
 
-                        </div> <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
-                            <img className="h-10" src="assets/images/svg/guests.svg" alt="" />
-                            <p className="capitalize text-sm">guests</p>
-                            <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
+    setDesignation(name);
+    setDestinationId(id);
+    setdropDownControll({ destination: false })
 
-                        </div>
-                    </div>
-                    <div onClick={() => { navigate('/search') }} className="h-auto cursor-pointer w-fit p-2 px-5 bg-red-500 flex justify-center items-center " style={{WebkitMask:"url('assets/images/svg/btn-shape.svg')", WebkitMaskPosition:"center", WebkitMaskSize:"100%", WebkitMaskRepeat:"no-repeat"}}>
-                        <p className="text-white">Go</p>
-                    </div>
+    const shareed = {
+      designationId: id,
+    };
+  
+  };
 
-                </div>
-            </div>
-        </>
-    )
+ const goWithDetails = async() =>{
+
+  if(destinationId ===""){
+  alert("Please Select Destination")
+  }
+  else{
+    let payloadData={
+      designationId: destinationId,
+      designation_name: destination,
+      guests:guest,
+      checkIn:date,
+      checkOut:date1,
+    }
+
+
+    navigate("/search", { state: payloadData });
+
+  }
+  
+  }
+
+
+  const GuestCall = (name) => {
+
+    setGuest(name)
+    setdropDownControll({ guest: false })
+  
+  };
+
+
+
+
+
+  const HandlerforHide = (e) => {
+
+    const id = e.target.id;
+    switch (id) {
+        case 'overlay':
+            setdropDownControll({ destination: false })
+
+            break;
+        case 'overlayBtn':
+            setdropDownControll({ destination: true })
+
+            break;
+        case 'libtn':
+            setdropDownControll({ destination: false })
+
+            break;
+        case 'overlayGuest':
+            setdropDownControll({ guest: false })
+
+            break;
+        case 'Guestbtn':
+            setdropDownControll({ guest: true })
+
+            break;
+
+        default:
+            break;
+    }
+
+
 }
 
-export default HeaderSection
+
+function showDatePicker() {
+  setDatePicker(true);
+}
+
+
+function setDateFun(date) {
+setDate(date);
+setdropDownControll({ destination: false })
+
+}
+
+function setDateFun1(date) {
+  setDate1(date);
+  setdropDownControll({ destination: false })
+  
+  }
+
+  return (
+    <>
+      <div className=" w-full bg-green-200 relative p-5  pb-48">
+        <img
+          className="absolute inset-0 h-full w-full object-cover"
+          src={bannerData && bannerData.banner_image}
+          alt=""
+        />
+        <div className="hidden sm:hidden md:hidden lg:hidden xl:hidden  z-10 relative  md:float-right lg:float-right xl:float-right gap-x-2 px-20">
+          <div className="flex flex-col w-fit cursor-pointer group">
+            <p className="text-white">Domestic packages</p>
+            <div className="h-1 w-full group-hover:bg-red-600 rounded-full"></div>
+          </div>
+          <div className="flex flex-col w-fit cursor-pointer group">
+            <p className="text-white">International packages</p>
+            <div className="h-1 w-full group-hover:bg-red-600 rounded-full"></div>
+          </div>
+          <img className="w-5" src="assets/images/svg/glob.svg" alt="" />
+          <img className="w-5" src="assets/images/svg/circle-user.svg" alt="" />
+        </div>
+
+        <div className="relative flex justify-center w-full mt-24 ">
+          <p className="text-5xl font-Gloom text-center font-bold capitalize text-white">
+            {bannerData && bannerData.banner_text}
+          </p>
+        </div>
+
+        <div className="relative mt-16 mb-5 hidden md:flex lg:flex xl:flex flex-row md:flex-row lg:flex-row xl:flex-row justify-center w-full gap-x-16  items-stretch">
+          <div className="relative z-10 gap-y-5 flex flex-col md:flex-col lg:flex-row xl:flex-row gap-x-3 p-3.5 bg-white w-fit after:rounded-md  md:after:w-[0%] lg:after:w-[107%] xl:after:2-[107%] after:content-[''] after:bg-white after:w-[0%] after:h-full after:absolute  after:skew-y-[0deg] after:skew-x-[340deg] after:z-[-1] after:top-0 after:-left-6 after:zindex-[-5px]">
+            <div
+             id='overlayBtn' onClick={HandlerforHide}
+              className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer relative"
+            >
+              <img className="h-10" src="assets/images/svg/map.svg" alt="" />
+              <p className="capitalize text-sm">
+                {destination === ""
+                  ? "destination"
+                  : destination}
+              </p>
+              <img
+                className="h-2"
+                src="assets/images/svg/down-arrow.svg"
+                alt=""
+              />
+
+              <div
+               id='overlay' onClick={HandlerforHide}
+                className={
+                  dropDownControll.destination ? "fixed inset-0" : "hidden"
+                }
+              ></div>
+              <div
+                className={
+                  dropDownControll.destination
+                    ? "absolute p-5 bg-white top-20 rounded-[5px]"
+                    : "hidden"
+                }
+              >
+                <ul className="flex flex-col gap-1" >
+                  {designationData &&
+                    designationData.data.map((item, index) => (
+                      <li
+                        onClick={() => {
+                          replaceCall(item.destination_id ,item.location);
+                        }}
+                        className="flex gap-1 opacity-50"
+                      >
+                        {" "}
+                        <img
+                          className="w-3 "
+                          src="assets/images/svg/location.svg"
+                          alt=""
+                        />
+                        <p>{item.location}</p>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+            <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer relative">
+              <img
+                className="h-10"
+                src="assets/images/svg/calendar1.svg"
+                alt=""
+              />
+              <div className="flex flex-col">
+              <p className="capitalize text-sm" >check in</p>
+              <DatePicker selected={date} onChange={(date) => setDateFun(date)}   dateFormat="yyyy-MM-dd" customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date.toDateString()}</p>}/>
+              </div>
+              <img
+                className="h-2"
+                src="assets/images/svg/down-arrow.svg"
+                alt=""
+              />
+            </div>{" "}
+            <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
+              <img
+                className="h-10"
+                src="assets/images/svg/calendar1.svg"
+                alt=""
+              />
+              <div className="flex flex-col">
+              <p className="capitalize text-sm" >check out</p>
+              <DatePicker selected={date1}onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
+              </div>
+              <img
+                className="h-2"
+                src="assets/images/svg/down-arrow.svg"
+                alt=""
+              />
+
+
+            </div>{" "}
+
+            <div id='Guestbtn' onClick={HandlerforHide} className="relative flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
+                            <img className="h-10" src="assets/images/svg/guests.svg" alt="" />
+                            <p className="capitalize text-sm">{guest === ""
+                  ? "Guests"
+                  : guest}</p>
+                            <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
+
+                            <div id='overlayGuest' onClick={HandlerforHide} className={dropDownControll.guest ? 'fixed inset-0 bg-black/0 z-59' : 'hidden'}></div>
+                            <div className={dropDownControll.guest ? 'absolute p-5 bg-white top-20 rounded-[5px]' : 'hidden'}>
+                                <ul className='flex  flex-col gap-1'>
+                                {Array(10).fill(1).map((el, i) =>
+                                    <li className='flex gap-1 opacity-50' id='libtn' onClick={()=>{GuestCall(i+1)}}> {i+1}</li>
+                                )}
+
+                                </ul>
+                            </div>
+                        </div>
+          </div>
+          <div
+            className="h-auto cursor-pointer w-fit p-2 px-5 bg-red-500 flex justify-center items-center "
+            style={{
+              WebkitMask: "url('assets/images/svg/btn-shape.svg')",
+              WebkitMaskPosition: "center",
+              WebkitMaskSize: "100%",
+              WebkitMaskRepeat: "no-repeat",
+            }}
+
+            onClick={()=>{goWithDetails()}}
+          >
+
+            <p className="text-white">Go</p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default HeaderSection;

@@ -40,5 +40,15 @@
      .MobileHide-DesktopView-flex {
         @apply hidden sm:flex md:flex lg:block xl:flex
      }
+     .opt-container input{
+        border:1px solid black
+
+     }
+     .logo-color-fill {
+        filter: invert(1);
+       }
+       
+
+
 
 }

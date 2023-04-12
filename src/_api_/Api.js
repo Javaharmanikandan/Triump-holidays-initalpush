@@ -19,7 +19,6 @@ export class ApiCall{
         }
         else{
 
-           
             const ResponseData = await OnlineConnect.PostMothod(url,payload)
             if(!ResponseData.status ){
                 //alert(ResponseData.message);

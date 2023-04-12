@@ -34,7 +34,7 @@ function HotelDetail() {
   // console.log(HotelDetails && HotelDetails.data.trip_package_details[0].title," Hotel Get")
 
   const CardHandler = () => {
-    setCard(!showCard);
+    setCard(false);
   };
 
   // Document title
@@ -55,12 +55,12 @@ function HotelDetail() {
 
   const onclickHandler = (imageData) =>{
 
-
     navigate('/photos', { state: imageData });
 
   }
 
-  if (loading) return <Loader active={loading} />;
+  
+if (loading) return <Loader active={loading} />;
 
   return (
     <>
@@ -72,7 +72,9 @@ function HotelDetail() {
               columnsCountBreakPoints={{ 350: 2, 750: 2, 900: 4 }}
             >
               <Masonry gutter={"10px"}>
-                {PackageDetails && PackageDetails.trip_images.map((item, index) => (
+              {PackageDetails && PackageDetails.trip_images.map((item, index ) => (
+                  <>
+                  {index <= 5?
                   <div key={index} className="relative group w-full h-full">
                     <img
                       className="w-full h-full object-cover "
@@ -93,9 +95,16 @@ function HotelDetail() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </div> 
+                  : <></>}
+                  </>
                 ))}
               </Masonry>
+
+
+            
+
+              
             </ResponsiveMasonry>
           </div>
           <div className="relative block sm:block md:block lg:hidden xl:hidden">
@@ -121,10 +130,10 @@ function HotelDetail() {
                 <div className="flex gap-x-2 items-center">
                   <img
                     className="h-4 w-auto opacity-40"
-                    src="assets/images/svg/location.svg"
+                    src="../../assets/images/svg/location.svg"
                     alt=""
                   />
-                  <p className="brand-sub-title opacity-40">
+                  <p className="brand-sub-title mt-1  text-sm opacity-40">
                     {PackageDetails && PackageDetails.location}
                   </p>
                 </div>
@@ -133,10 +142,10 @@ function HotelDetail() {
                 <div className="flex gap-x-2 items-center justify-end">
                   <img
                     className="h-4 w-auto opacity-40"
-                    src="assets/images/svg/cal-time.svg"
+                    src="../../assets/images/svg/cal-time.svg"
                     alt=""
                   />
-                  <p className="brand-sub-title opacity-40">Duration</p>
+                  <p className="brand-sub-title opacity-40 text-sm">Duration</p>
                 </div>
                 <p className="text-red-500 brand-sub-title">{ PackageDetails && PackageDetails.duration}</p>
               </div>
@@ -147,14 +156,14 @@ function HotelDetail() {
             </p>
 
             <div className="flex flex-col items-start gap-y-4">
-              <p className="brand-title">Amenties</p>
-              <div className="flex flex-wrap gap-3">
+              <p className="brand-title">Amenities</p>
+              <div className="grid grid-flow-row-dense gap-5 md:gap-10 grid-cols-3 md:grid-cols-4 grid-rows-2 mt-1 mb-5">
 
 
                 {PackageDetails && PackageDetails.amenity.map((item,index)=>
-                <div className="flex gap-x-2 items-center">
+                <div className="flex gap-x-2 items-center ">
                   <img src={item.amenity_image} alt=""  style={{width:"20px",height:"20px"}}/>
-                  <p className="brand-sub-title opacity-50 whitespace-nowrap">
+                  <p className="brand-sub-title text-[14px] opacity-50 whitespace-nowrap col-span-2 ml-3">
                     {item.amenity_name}
                   </p>
                 </div>
@@ -184,7 +193,9 @@ function HotelDetail() {
               </div> */}
             </div>
 
-            <div className="flex flex-col gap-y-2">
+            <div className="flex flex-col gap-y-2 my-5">
+            <p className="brand-title">Itienerary</p>
+
 
             {PackageDetails && PackageDetails.itienerary.map((itemIti,indexIti) =>           
               <Itenerary data={itemIti} index={indexIti} />
@@ -194,23 +205,22 @@ function HotelDetail() {
 
           <div className="w-full sm:w-2/6 md:w-2/6 lg:w-2/6 xl:w-2/6 mx-2">
             <div className="w-full border rounded-lg px-2 py-4 flex justify-between items-center">
-              <img src="assets/images/svg/left-solid-arrow.svg" alt="" />
-              <div className="flex flex-col justify-between items-center gap-5">
-                <p>
-                  The trip arranged by triumph <br />
-                  holidays was best in my life
+              <img src="../../assets/images/svg/left-solid-arrow.svg" alt="" />
+              <div style={{marginLeft:20}} className="flex flex-col justify-between items-center gap-5">
+                <p style={{fontSize:14}}>
+                  {PackageDetails && PackageDetails.review[0].review_content}
                 </p>
                 <div className="flex gap-x-2 items-center">
                   <img
                     className="w-7 h-7 rounded-full object-cover"
-                    src="assets/images/ddt5.png"
+                    src={PackageDetails && PackageDetails.review[0].profile_image}
                     alt=""
                   />
-                  <p>content</p>
+                  <p style={{fontSize:14}}>{PackageDetails && PackageDetails.review[0].name}, <span>{PackageDetails && PackageDetails.review[0].location}</span></p>
                 </div>
               </div>
             </div>
-            <DetailCard Handler={CardHandler}  data={PackageDetails && PackageDetails}/>
+            <DetailCard Handler={CardHandler} id={DecodeUrl(id)} data={PackageDetails && PackageDetails}/>
             <div className="w-full p-5">
               <div className="">
                 <img

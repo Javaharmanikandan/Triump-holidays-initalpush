@@ -5,6 +5,7 @@ import useFetchData from '../CustomHooks/useFetchData';
 
 
 function TripModal(props) {
+	// const [ currentUser, setCurrentUser ] = useContext(AuthContext);
 
     const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
 

@@ -6,9 +6,8 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import useFetchData from '../CustomHooks/useFetchData';
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from 'react-router';
 
-function LoginDesktopModal(props) {
+function RegisterDesktopModal(props) {
 
     const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
 
@@ -16,10 +15,12 @@ function LoginDesktopModal(props) {
     const [ph, setPh] = useState("8098629606");
     const [user, setUser] = useState(null);
     //Set basic details
-    const [userName,setUserName] =useState();
+    const [fullName,setFullName] =useState();
+    const [email,setEmail] =useState();
+    const [mobile,setMobile] =useState();
     const [password,setPassword] =useState();
 
-    const navigate = useNavigate()
+    
 
 
   
@@ -80,10 +81,12 @@ function LoginDesktopModal(props) {
     
 
 
-const baseUrl = process.env.REACT_APP_SERVER_BASE_URL + "/user/login";
+const baseUrl = process.env.REACT_APP_SERVER_BASE_URL + "/user/register";
 
     const payload={
-        email_phone:userName,
+        name:fullName,
+        email:email,
+        phone:mobile,
         password:password
     }
 
@@ -106,20 +109,9 @@ const baseUrl = process.env.REACT_APP_SERVER_BASE_URL + "/user/login";
    const  loginCall =async ()=>{
 
 
-    const data = await AuthApi.userLogin(baseUrl,payload)
-    if(data && data.status)
-    {
-      alert(data && data.message);
-      navigate("/")
-    }
-    else{
+    const data = await AuthApi.userRegister(baseUrl,payload)
 
-        alert(data && data.message);
-        navigate("/")
-
-    }
-
-     
+ 
     }
 
     function handleChange(e){
@@ -139,8 +131,8 @@ const baseUrl = process.env.REACT_APP_SERVER_BASE_URL + "/user/login";
                     <div className='w-3/5 h-full bg-white absolute right-0 top-0 p-5 rounded-l-[20px]'>
                         <div className='flex justify-center items-center h-full w-full'>
                             <div className='flex flex-col gap-4'>
-                                <p className='capitalize text-2xl font-bold'>Login Your Account</p>
-                                {/* <div className='flex gap-x-5 my-2'>
+                                <p className='capitalize text-2xl font-bold'>create account</p>
+                                <div className='flex gap-x-5 my-2'>
                                     <div className='p-4 border rounded-md flex gap-x-3 items-center'>
                                         <img className='w-5' src="assets/images/google.png" alt="" />
                                         <p className='capitalize'>Sign up with Google</p>
@@ -149,14 +141,16 @@ const baseUrl = process.env.REACT_APP_SERVER_BASE_URL + "/user/login";
                                         <img className='w-5' src="assets/images/facebook.png" alt="" />
                                         <p className='capitalize'>Sign up with Google</p>
                                     </div>
-                                </div> */}
+                                </div>
                                 <p className='text-2xl opacity-25 font-bold text-center'>-or-</p>
 
-                                <input className='border-b focus:outline-none py-3' type="text" autocomplete="off" name="" onChange={e => setUserName(e.target.value)} placeholder='Email or Mobile'/>
-                                <input className='border-b focus:outline-none py-3' type="text" autocomplete="off" name=""   onChange={e => setPassword(e.target.value)}  placeholder='Password '/>
-                               
-                                <p onClick={()=>{loginCall()}} className='capitalize text-xl text-white w-full py-3 text-center bg-[#363334] rounded-md'>Login account</p>
-                                <p className='text-sm'>Don't have an account? Sign up</p>
+                                <input className='border-b focus:outline-none py-3' type="text" autocomplete="off" name="" onChange={e => setFullName(e.target.value)} placeholder='Full Name'/>
+                                <input className='border-b focus:outline-none py-3' type="text" autocomplete="off" name=""   onChange={e => setMobile(e.target.value)}  placeholder='Mobile Number'/>
+                                <input className='border-b focus:outline-none py-3' type="text" autocomplete="off" name=""  onChange={e => setEmail(e.target.value)}   placeholder='Email Address'/>
+                                <input className='border-b focus:outline-none py-3' type="password" autocomplete="off" name=""  onChange={e => setPassword(e.target.value)}  placeholder='Password'/>
+
+                                <p onClick={()=>{loginCall()}} className='capitalize text-xl text-white w-full py-3 text-center bg-[#363334] rounded-md'>create account</p>
+                                <p className='text-sm'>Already have an account? Log in</p>
                             </div>
                         </div>
                     </div>
@@ -170,4 +164,4 @@ const baseUrl = process.env.REACT_APP_SERVER_BASE_URL + "/user/login";
     )
 }
 
-export default LoginDesktopModal
+export default RegisterDesktopModal

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PackageComponent() {
+function PackageComponent(props) {
     return (
         <>
             <div className='flex border relative  p-5  rounded-lg sm:border-none md:border-none lg:border-none xl:border-none flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row bg-[#E8ECF6] sm:bg-white md:bg-white lg:bg-white xl:bg-white py-5 '>
@@ -13,17 +13,17 @@ function PackageComponent() {
                         <tr>
                             <td><p className='capitalize text-sm'>destination</p></td>
                             <td>:</td>
-                            <td><p className='capitalize text-sm'>singapore</p></td>
+                            <td><p className='capitalize text-sm'>{props.data && props.data.location}</p></td>
                         </tr>
                         <tr>
                             <td><p className='capitalize text-sm'>Duration</p></td>
                             <td>:</td>
-                            <td><p className='capitalize text-sm'>5d/3n</p></td>
+                            <td><p className='capitalize text-sm'>{props.data && props.data.duration}</p></td>
                         </tr>
                         <tr>
                             <td><p className='capitalize text-sm'>cost</p></td>
                             <td>:</td>
-                            <td><p className='capitalize text-sm'>25,000</p></td>
+                            <td><p className='capitalize text-sm'>{props.data && props.data.location}</p></td>
                         </tr>
                     </table>
                     </div>
