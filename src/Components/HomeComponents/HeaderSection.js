@@ -99,8 +99,7 @@ function HeaderSection() {
             setdropDownControll({ destination: true })
 
             break;
-        case 'libtn':
-            setdropDownControll({ destination: false })
+       
         case 'destiImage':
             setdropDownControll({ destination: true })
             break;
@@ -266,8 +265,8 @@ function setDateFun1(date) {
             </div>{" "}
 
             <div id='Guestbtn' onClick={HandlerforHide} className="relative flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
-                            <img id='GuestImage' onClick={(e)=>{HandlerforHide(e)}}  className="h-10" src="assets/images/svg/guests.svg" alt="" />
-                            <p id='GuestName' onClick={(e)=>{HandlerforHide(e)}}   className="capitalize text-sm">{guest === ""
+                            <img id='GuestImage' onClick={HandlerforHide}  className="h-10" src="assets/images/svg/guests.svg" alt="" />
+                            <p id='GuestName' onClick={HandlerforHide}   className="capitalize text-sm">{guest === ""
                   ? "Guests"
                   : guest}</p>
                             <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
