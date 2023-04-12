@@ -240,7 +240,7 @@ function setDateFun1(date) {
               />
               <div className="flex flex-col">
               <p className="capitalize text-sm" >check out</p>
-              <DatePicker selected={date1}onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
+              <DatePicker minDate={new Date(date)} selected={date1}onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
               </div>
               <img
                 className="h-2"
