@@ -57,7 +57,7 @@ function PackageComponent(props) {
 
 
                     </div> */}
-                    <p className='text-center font-mono hidden sm:block md:block lg:block xl:block capitalize text-red-700  '>“Thanks For your Intrested in this Package We will Catch up you Shortly!”</p>
+                    <p className='text-center font-mono hidden sm:block md:block lg:block xl:block capitalize text-red-700  '>“Thanks you for your intrest we will catch up with you shortly!”</p>
 
 
                 </div>
