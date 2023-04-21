@@ -28,9 +28,9 @@ function PackageComponent(props) {
                     </table>
                     </div>
                 </div>
-                <div className='border-0 sm:border md:border lg:border xl:border border-gray-400 p-5 rounded-[5px]'>
-                    <p className='capitalize font-normal text-start text-xl mb-5 MobileHide-DesktopView-block'>package</p>
-
+                <div className='flex flex-col justify-center  border-0 sm:border md:border lg:border xl:border border-gray-400 p-5 rounded-[5px]'>
+                    {/* <p className='capitalize font-normal text-start text-xl mb-5 MobileHide-DesktopView-block'>package</p> */}
+{/* 
                     <ul className='flex gap-5 flex-wrap'>
                         <li>
                             <List />
@@ -44,11 +44,11 @@ function PackageComponent(props) {
                         <li>
                             <List />
                         </li>
-                    </ul>
+                    </ul> */}
 
-                    <p className='capitalize font-normal text-start text-md mb-3 MobileHide-DesktopView-block'>documents</p>
+                    {/* <p className='capitalize font-normal text-start text-md mb-3 MobileHide-DesktopView-block'>documents</p> */}
 
-                    <div className='hidden sm:flex md:flex lg:flex xl:flex gap-2 flex-wrap mb-2'>
+                    {/* <div className='hidden sm:flex md:flex lg:flex xl:flex gap-2 flex-wrap mb-2'>
                         <Box />
                         <Box />
                         <Box />
@@ -56,8 +56,8 @@ function PackageComponent(props) {
                         <Box />
 
 
-                    </div>
-                    <p className=' hidden sm:block md:block lg:block xl:block capitalize text-red-500 underline underline-offset-4'>download all</p>
+                    </div> */}
+                    <p className='text-center font-mono hidden sm:block md:block lg:block xl:block capitalize text-red-700  '>“Thanks For your Intrested in this Package We will Catch up you Shortly!”</p>
 
 
                 </div>

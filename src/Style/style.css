@@ -1204,10 +1204,6 @@ body {
   width: 13rem;
 }
 
-.w-6 {
-  width: 1.5rem;
-}
-
 .w-7 {
   width: 1.75rem;
 }
@@ -1602,6 +1598,11 @@ body {
   background-color: rgb(247 247 247 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#f04444\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 68 68 / var(--tw-bg-opacity));
+}
+
 .bg-black\/0 {
   background-color: rgb(0 0 0 / 0);
 }
@@ -1657,11 +1658,6 @@ body {
 
 .bg-white\/90 {
   background-color: rgb(255 255 255 / 0.9);
-}
-
-.bg-\[\#f04444\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(240 68 68 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -1852,6 +1848,14 @@ body {
   font-family: Gloss And Bloom, cursive;
 }
 
+.font-sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1941,6 +1945,11 @@ body {
   color: rgb(0 0 0 / 0.6);
 }
 
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
 .text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
@@ -1964,6 +1973,21 @@ body {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -2099,6 +2123,10 @@ body {
 .hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+
+.hover\:font-serif:hover {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .focus\:border-red-500:focus {

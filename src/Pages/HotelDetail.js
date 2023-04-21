@@ -15,6 +15,7 @@ import ViewAllPhotos from './ViewAllPhotos';
 function HotelDetail() {
   const { id } = useParams();
   const [showCard, setCard] = useState(false);
+  const [iteneraryActive, setitenearyActive] = useState(0);
   const navigate = useNavigate();
   const payLoad = {
     trippackage_id: DecodeUrl(id),
@@ -56,6 +57,18 @@ function HotelDetail() {
   const onclickHandler = (imageData) =>{
 
     navigate('/photos', { state: imageData });
+
+  }
+
+
+  const ActiveToggler=(id)=>{
+
+  if(id===iteneraryActive){
+    setitenearyActive(0)
+  }
+  else{
+    setitenearyActive(id)
+  }
 
   }
 
@@ -198,7 +211,7 @@ if (loading) return <Loader active={loading} />;
 
 
             {PackageDetails && PackageDetails.itienerary.map((itemIti,indexIti) =>           
-              <Itenerary data={itemIti} index={indexIti} />
+              <Itenerary data={itemIti} index={indexIti} id={indexIti+1} active={iteneraryActive} activeHandler={ActiveToggler} />
             )}
             </div>
           </div>
