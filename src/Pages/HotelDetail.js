@@ -238,7 +238,7 @@ if (loading) return <Loader active={loading} />;
               <div className="">
                 <img
                   className="w-full h-auto "
-                  src="assets/images/mb-word.png"
+                  src="../assets/images/mb-word.png"
                   alt=""
                 />
               </div>
