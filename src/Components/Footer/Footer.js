@@ -123,7 +123,8 @@ function Footer() {
                         src={"../../assets/images/svg/call.svg"}
                         alt=""
                       />
-                      <p className="hidden sm:hidden md:hidden lg:block xl:block ">
+                      {/* <p className="hidden sm:hidden md:hidden lg:block xl:block "> */}
+                      <p className=" lg:block xl:block ">
                         {ProfileDetails &&
                           ProfileDetails.data.triumph_profile.phone}
                       </p>
@@ -137,7 +138,7 @@ function Footer() {
                         src={"../../assets/images/svg/mail-red.svg"}
                         alt=""
                       />
-                      <p className="hidden sm:hidden md:hidden lg:block xl:block ">
+                      <p className=" lg:block xl:block ">
                         {ProfileDetails &&
                           ProfileDetails.data.triumph_profile.email}
                       </p>
@@ -172,24 +173,24 @@ function Footer() {
                 <div className="flex gap-x-3">
                   <img
                     className="h-20 w-auto"
-                    src="assets/images/footer1.png"
+                    src="../../assets/images/footer1.png"
                     alt=""
                   />
                   <img
                     className="h-20 w-auto"
-                    src="assets/images/footer2.png"
+                    src="../../assets/images/footer2.png"
                     alt=""
                   />
                 </div>
                 <div className="flex gap-x-3">
                   <img
                     className="h-20 w-auto"
-                    src="assets/images/footer3.png"
+                    src="../../assets/images/footer3.png"
                     alt=""
                   />
                   <img
                     className="h-20 w-auto"
-                    src="assets/images/footer4.png"
+                    src="../../assets/images/footer4.png"
                     alt=""
                   />
                 </div>

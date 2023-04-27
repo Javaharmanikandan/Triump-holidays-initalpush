@@ -103,6 +103,10 @@ function HeaderSection() {
         case 'destiImage':
             setdropDownControll({ destination: true })
             break;
+
+            case 'destiImage1':
+            setdropDownControll({ destination: true })
+            break;
         case 'destiName':
           setdropDownControll({ destination: true })
           break;
@@ -124,6 +128,11 @@ function HeaderSection() {
             setdropDownControll({ guest: true })
 
             break;
+
+            case 'GuestImage1':
+              setdropDownControll({ guest: true })
+  
+              break;
 
         default:
             break;
@@ -183,15 +192,16 @@ function setDateFun1(date) {
              id='overlayBtn' onClick={HandlerforHide}
               className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer relative"
             >
-              <img id='destiImage' className="h-10" src="assets/images/svg/map.svg" alt="" />
+              <img  id='destiImage' className="h-10" src="../../assets/images/svg/map.svg" alt="" />
               <p id='destiName' className="capitalize text-sm">
                 {destination === ""
                   ? "destination"
                   : destination}
               </p>
               <img
+              id='destiImage1'
                 className="h-2"
-                src="assets/images/svg/down-arrow.svg"
+                src="../../assets/images/svg/down-arrow.svg"
                 alt=""
               />
 
@@ -239,11 +249,11 @@ function setDateFun1(date) {
               <p className="capitalize text-sm" >check in</p>
               <DatePicker selected={date} onChange={(date) => setDateFun(date)}   dateFormat="yyyy-MM-dd" customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date.toDateString()}</p>}/>
               </div>
-              <img
+              {/* <img
                 className="h-2"
                 src="assets/images/svg/down-arrow.svg"
                 alt=""
-              />
+              /> */}
             </div>{" "}
             <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
               <img
@@ -253,13 +263,13 @@ function setDateFun1(date) {
               />
               <div className="flex flex-col">
               <p className="capitalize text-sm" >check out</p>
-              <DatePicker minDate={new Date(date)} selected={date1}onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
+              <DatePicker minDate={new Date(date)} selected={date1} onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
               </div>
-              <img
+              {/* <img
                 className="h-2"
                 src="assets/images/svg/down-arrow.svg"
                 alt=""
-              />
+              /> */}
 
 
             </div>{" "}
@@ -269,7 +279,7 @@ function setDateFun1(date) {
                             <p id='GuestName' onClick={HandlerforHide}   className="capitalize text-sm">{guest === ""
                   ? "Guests"
                   : guest}</p>
-                            <img className="h-2" src="assets/images/svg/down-arrow.svg" alt="" />
+                            <img id='GuestImage1' onClick={HandlerforHide} className="h-2" src="../../assets/images/svg/down-arrow.svg" alt="" />
 
                             <div id='overlayGuest' onClick={HandlerforHide} className={dropDownControll.guest ? 'fixed inset-0 bg-black/0 z-59' : 'hidden'}></div>
                             <div className={dropDownControll.guest ? 'absolute p-5 bg-white top-20 rounded-[5px]' : 'hidden'}>

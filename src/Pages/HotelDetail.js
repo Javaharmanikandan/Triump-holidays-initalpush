@@ -80,7 +80,7 @@ if (loading) return <Loader active={loading} />;
     
       <div className="brand-container my-10">
         <div className="mb-5">
-          <div className="hidden sm:hidden md:hidden lg:block xl:block">
+          <div className=" lg:block xl:block">
             <ResponsiveMasonry
               columnsCountBreakPoints={{ 350: 2, 750: 2, 900: 4 }}
             >
@@ -120,7 +120,7 @@ if (loading) return <Loader active={loading} />;
               
             </ResponsiveMasonry>
           </div>
-          <div className="relative block sm:block md:block lg:hidden xl:hidden">
+          <div className=" hidden relative block sm:block md:block lg:hidden xl:hidden">
             <img
               className="w-full h-full object-cover "
               src="assets/images/grid6.png"
