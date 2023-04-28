@@ -7,13 +7,9 @@ import addDays from 'date-fns/addDays'
 import "react-datepicker/dist/react-datepicker.css";
 function HeaderSection() {
   const [datePicker, setDatePicker] = useState(false);
-  const [date, setDate] = useState(new Date());
-<<<<<<< HEAD
-  const [date1, setDate1] = useState(new Date(Date.now() + 3600 * 1000 * 24));
-=======
-  const [date1, setDate1] = useState(new Date(Date.now() + ( 3600 * 1000 * 24)));
  
->>>>>>> 0826cdf341a7c304cdbfd728a2f41ec29ff03f07
+  const [date, setDate] = useState(new Date());
+  const [date1, setDate1] = useState(new Date(Date.now() + 3600 * 1000 * 24));
 
   const [destination, setDesignation] = useState("");
   const [guest, setGuest] = useState("");
@@ -138,30 +134,9 @@ function HeaderSection() {
     setdropDownControll({ destination: false });
   }
 
-<<<<<<< HEAD
   function setDateFun1(date) {
     setDate1(date);
     setdropDownControll({ destination: false });
-=======
-
-function showDatePicker() {
-  setDatePicker(true);
-}
-
-
-function setDateFun(date) {
-
-setDate(date);
-setDate1(addDays(new Date(date), 1));
-setdropDownControll({ destination: false })
-
-}
-
-function setDateFun1(date) {
-  setDate1(date);
-  setdropDownControll({ destination: false })
-  
->>>>>>> 0826cdf341a7c304cdbfd728a2f41ec29ff03f07
   }
 
   return (
@@ -373,61 +348,6 @@ function setDateFun1(date) {
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-=======
-            <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer relative">
-              <img
-                className="h-10"
-                src="assets/images/svg/calendar1.svg"
-                alt=""
-              />
-              <div className="flex flex-col">
-              <p className="capitalize text-sm" >check in</p>
-              <DatePicker selected={date} onChange={(date) => setDateFun(date)}   dateFormat="yyyy-MM-dd" customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date.toDateString()}</p>}/>
-              </div>
-              {/* <img
-                className="h-2"
-                src="assets/images/svg/down-arrow.svg"
-                alt=""
-              /> */}
-            </div>{" "}
-            <div className="flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
-              <img
-                className="h-10"
-                src="assets/images/svg/calendar1.svg"
-                alt=""
-              />
-              <div className="flex flex-col">
-              <p className="capitalize text-sm" >check out</p>
-              <DatePicker minDate={date1} selected={date1} onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
-              </div>
-              {/* <img
-                className="h-2"
-                src="assets/images/svg/down-arrow.svg"
-                alt=""
-              /> */}
-
-
-            </div>{" "}
-
-            <div id='Guestbtn' onClick={HandlerforHide} className="relative flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
-                            <img id='GuestImage' onClick={HandlerforHide}  className="h-10" src="../../assets/images/svg/guests.svg" alt="" />
-                            <p id='GuestName' onClick={HandlerforHide}   className="capitalize text-sm">{guest === ""
-                  ? "Guests"
-                  : guest}</p>
-                            <img id='GuestImage1' onClick={HandlerforHide} className="h-2" src="../../assets/images/svg/down-arrow.svg" alt="" />
-
-                            <div id='overlayGuest' onClick={HandlerforHide} className={dropDownControll.guest ? 'fixed inset-0 bg-black/0 z-59' : 'hidden'}></div>
-                            <div className={dropDownControll.guest ? 'absolute p-5 bg-white top-20 rounded-[5px]' : 'hidden'}>
-                                <ul className='flex  flex-col gap-1'>
-                                {Array(10).fill(1).map((el, i) =>
-                                    <li className='flex gap-1 opacity-50' id='libtn' onClick={()=>{GuestCall(i+1)}}> {i+1}</li>
-                                )}
-
-                                </ul>
-                            </div>
-                        </div>
->>>>>>> 0826cdf341a7c304cdbfd728a2f41ec29ff03f07
           </div>
           <div
             className="h-auto cursor-pointer max-md:hidden w-fit p-2 py-8 px-5 bg-red-500 flex justify-center items-center "

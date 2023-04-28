@@ -203,7 +203,7 @@ function DetailCard(props) {
               <p className="text-md">25,000</p>
               <p className="text-red-500 text-sm">5d/3n</p>
             </div>
-            <p className="underline underline-offset-4">10-15 mar</p>
+            <p className="underline underline-offset-4">{date1.toDateString()}</p>
           </div>
 
           <p onClick={onSubmit} className="px-5 py-2 bg-red-500 capitalize w-fit text-white rounded-md">
