@@ -198,18 +198,104 @@ function DetailCard(props) {
 
       <div className="w-full fixed bottom-0 left-0 bg-white MobileView-DesktopHide-block z-30 shadow-lg">
         <div className="flex justify-between items-center p-4 ">
-          <div className="flex flex-col gap-5">
+          {/* <div className="flex flex-col gap-5">
             <div className="flex gap-x-2">
               <p className="text-md">25,000</p>
               <p className="text-red-500 text-sm">5d/3n</p>
             </div>
             <p className="underline underline-offset-4">{date1.toDateString()}</p>
+          </div> */}
+          <div className="bg-gray-300/20 p-5 rounded-lg flex flex-wrap gap-5 justify-between">
+          <div className="flex flex-col items-end w-fit">
+            <div className="flex justify-between items-center gap-4">
+              <img
+                className="w-4 h-4 object-contain"
+                src="../../assets/images/svg/calendar.svg"
+                alt=""
+              />
+              <p className="opacity-25 text-[13px]">Check-in</p>
+            </div>
+            <DatePicker
+              selected={date}
+              onChange={(date) => setDate(date)}
+              dateFormat="yyyy-MM-dd"
+              customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date.toDateString()}</p>}
+            />
           </div>
+          <div className="flex flex-col items-end w-fit">
+            <div className="flex justify-between items-center gap-4">
+              <img
+                className="w-4 h-4 object-contain"
+                src="../../assets/images/svg/calendar.svg"
+                alt=""
+              />
+              <p className="opacity-25 text-[13px]">Check-out</p>
+            </div>
+            <DatePicker
+ minDate={new Date(date)}
+              selected={date1}
+              onChange={(date) => setDate1(date)}
+              dateFormat="yyyy-MM-dd"
+              customInput={
+                <p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>
+              }
+            />
+          </div>
+          <div 
+          id="overlayGuest"
+          onClick={HandlerforHide}
+          
+          className=" flex flex-col items-end w-fit">
+            <div
+              
+              className=" relative flex justify-between items-center gap-4"
+            >
+              <img
+                className="w-4 h-4 object-contain"
+                src="../../assets/images/svg/user.svg"
+                alt=""
+              />
+              <p className="opacity-25  text-[13px]">Guests</p>
 
-          <p onClick={onSubmit} className="px-5 py-2 bg-red-500 capitalize w-fit text-white rounded-md">
+              <div
+              
+                className={
+                  guestDropdown
+                    ? "absolute p-5 bg-white top-16 shadow-md rounded-[5px]"
+                    : "hidden"
+                }
+              >
+                <ul className="flex  flex-col gap-1">
+                  {Array(10)
+                    .fill(1)
+                    .map((el, i) => (
+                      <li
+                        className="flex gap-1 opacity-50"
+                        id="libtn"
+                        onClick={() => {
+                          GuestCall(i + 1);
+                        }}
+                      >
+                        {" "}
+                        {i + 1}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+            <p  className="text-[12px] cursor-pointer active:opacity-50" id="Guestbtn"
+                onClick={HandlerforHide}
+                >{guest} Guests</p>
+          </div>
+        </div>
+
+         
+        </div>
+        <div className="flex justify-center items-center mb-6">
+        <p onClick={onSubmit} className="px-5 py-2 bg-red-500 capitalize w-fit text-white rounded-md">
             plan your trip
           </p>
-        </div>
+          </div>
       </div>
     </>
   );
