@@ -49,7 +49,7 @@ export default function Slidercus(props) {
   };
   return (
     <>
-      <div className='container-wrapper'>
+      <div className='container-wrapper max-md:mt-32'>
       <p className='text-2xl my-2 mb-10 text-center font-bold capitalize'>{props.title}<span className='text-red-500'> packages</span></p>
         <Slider  {...settings}>
         {props.data ? props.data.map((item) =><ProductCard data={item}/>):null}

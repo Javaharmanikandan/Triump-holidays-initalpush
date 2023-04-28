@@ -206,7 +206,7 @@ function DetailCard(props) {
             <p className="underline underline-offset-4">10-15 mar</p>
           </div>
 
-          <p className="px-5 py-2 bg-red-500 capitalize w-fit text-white rounded-md">
+          <p onClick={onSubmit} className="px-5 py-2 bg-red-500 capitalize w-fit text-white rounded-md">
             plan your trip
           </p>
         </div>

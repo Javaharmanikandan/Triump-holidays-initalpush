@@ -39,7 +39,7 @@ function Home() {
     return (
         <>
             <HeaderSection  />
-            <MobileSearchSection />
+            {/* <MobileSearchSection /> */}
             <Sliders title={HomeDetails && HomeDetails.data.trip_package.category[0].category_name}  data={HomeDetails && HomeDetails.data.trip_package.category[0].category_data}/>
             <SectionBanner />
             <ChoosebyTheme data={HomeDetails && HomeDetails.data.trip_theme}/>
