@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import useFetchData from "../../CustomHooks/useFetchData";
 import DatePicker from "react-datepicker";
+import addDays from 'date-fns/addDays'  
 
 import "react-datepicker/dist/react-datepicker.css";
 function HeaderSection() {
-
   const [datePicker, setDatePicker] = useState(false);
   const [date, setDate] = useState(new Date());
   const [date1, setDate1] = useState(new Date(Date.now() + ( 3600 * 1000 * 24)));
+ 
 
 
   const [destination ,setDesignation] =useState("");
@@ -21,6 +22,7 @@ function HeaderSection() {
     checkout: false,
     guest: false,
   });
+
   const [designationSelected, setDesignationSeleted] = useState();
   const navigate = useNavigate();
 
@@ -38,6 +40,7 @@ function HeaderSection() {
   );
 
   console.log(designationData, "design");
+
   const bannerData = bannerAndFaqData && bannerAndFaqData.data.banner;
   const faqData = bannerAndFaqData && bannerAndFaqData.data.faq;
 
@@ -148,7 +151,9 @@ function showDatePicker() {
 
 
 function setDateFun(date) {
+
 setDate(date);
+setDate1(addDays(new Date(date), 1));
 setdropDownControll({ destination: false })
 
 }
@@ -263,7 +268,7 @@ function setDateFun1(date) {
               />
               <div className="flex flex-col">
               <p className="capitalize text-sm" >check out</p>
-              <DatePicker minDate={new Date(date)} selected={date1} onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
+              <DatePicker minDate={date1} selected={date1} onChange={(date) => setDateFun1(date)}   dateFormat="yyyy-MM-dd"  customInput={<p className="text-[12px] cursor-pointer active:opacity-50">{date1.toDateString()}</p>}/>
               </div>
               {/* <img
                 className="h-2"
@@ -275,7 +280,7 @@ function setDateFun1(date) {
             </div>{" "}
 
             <div id='Guestbtn' onClick={HandlerforHide} className="relative flex gap-x-2 items-center border border-black/20 p-2 rounded-[5px] cursor-pointer">
-                            <img id='GuestImage' onClick={HandlerforHide}  className="h-10" src="assets/images/svg/guests.svg" alt="" />
+                            <img id='GuestImage' onClick={HandlerforHide}  className="h-10" src="../../assets/images/svg/guests.svg" alt="" />
                             <p id='GuestName' onClick={HandlerforHide}   className="capitalize text-sm">{guest === ""
                   ? "Guests"
                   : guest}</p>
